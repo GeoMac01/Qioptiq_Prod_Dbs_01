@@ -45,6 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Helper\SQLdbClass.cs" />
     <Compile Include="Db_Frm01.cs">
       <SubType>Form</SubType>
     </Compile>
