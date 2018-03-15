@@ -12,21 +12,24 @@ using System.Windows.Forms;
 using Microsoft.VisualBasic;
 
 
-namespace Qioptiq_Prod_Dbs
+namespace Qioptiq_Prod_Dbs.Helper
 {
     class SQLadaptClass
     {
         SqlConnection con;
         SqlCommand cmd;
-        SqlDataAdapter adapt;
-        int iD = 0; //loaded with the new row index new row
-        public static string DbServerName = string.Empty;
-        public static string DbName = string.Empty;
-        public static string DbTableName = string.Empty;
-        public static string DbUsername = string.Empty;
-        public static string DbPassword = string.Empty;
-        private static string dataBaseName = string.Empty;
+        SqlDataAdapter adapter;
 
+        #region parameters
+        private static int iD = 0; //loaded with the new row index new row
+        private static DataSet ds = new DataSet();
+        public static string DbServerName = null;
+        public static string DbName = null;
+        public static string DbTableName = null;
+        public static string DbUsername = null;
+        public static string DbPassword = null;
+        private static string dataBaseName = null;
+        #endregion
         //==========================================================================================//
         public string GetConnectionString()
         {
@@ -39,19 +42,20 @@ namespace Qioptiq_Prod_Dbs
             return connectionString;
         }
 //==========================================================================================//
-
         public bool OpenSqlConnection()
         {
             try
             {
-                OpenSqlConnection();
                 con = new SqlConnection(GetConnectionString());
+                con.Open();
                 MessageBox.Show("ServerVersion: " + con.ServerVersion + "  State: " + con.State);
+                con.Close();
                 return true;
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                MessageBox.Show("Dtb Error " + e.ToString());
+                //MessageBox.Show("Dtb Error " + e.ToString());
+                MessageBox.Show("Dtb error\n Check string\n");
                 return false;
             }
         }
@@ -67,11 +71,11 @@ namespace Qioptiq_Prod_Dbs
 
             string adapterString = "SELECT * FROM" + nameDb + "WHERE LaserId = (SELECT max(LaserId) FROM" + dataBaseName + ")";
 
-            adapt = new SqlDataAdapter(adapterString, con);
+            //adapt = new SqlDataAdapter(adapterString, con);
 
             try
             {
-                adapt.Fill(dt);
+                //adapt.Fill(dt);
                 dtGrd.DataSource = dt;
             }
             catch (Exception e) { MessageBox.Show("DB adaptor error" + e.ToString()); }
@@ -81,10 +85,41 @@ namespace Qioptiq_Prod_Dbs
             return true;
         }
 //==========================================================================================//
+        public DataSet FindTables()
+            {
+                adapter = new SqlDataAdapter();
+                DataSet ds = new DataSet();
+                int i = 0;
+                string sql = null;
+
+                sql = "Select DISTINCT(name) FROM sys.Tables";
+
+
+                try
+                {
+                   // connection.Open();
+                    cmd = new SqlCommand(sql, con);
+                    adapter.SelectCommand = cmd;
+                    adapter.Fill(ds);
+                    adapter.Dispose();
+                    cmd.Dispose();
+                    con.Close();
+
+                    for (i = 0; i <= ds.Tables[0].Rows.Count - 1; i++)
+                    {
+                        MessageBox.Show(ds.Tables[0].Rows[i].ItemArray[0].ToString());
+                    }
+                }
+                catch (Exception) { MessageBox.Show("Cannot find tables"); }
+
+            return ds;
+            }
+//==========================================================================================//
 
 
 
-        //=========================================================================================//
-        //=========================================================================================//
-    }
+
+    //=========================================================================================//
+    //=========================================================================================//
+}
 }
