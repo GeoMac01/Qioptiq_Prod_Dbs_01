@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Qioptiq_Prod_Dbs
 {
-    public partial class Form1 : Form
+    public partial class Frm_Datbs_Trans : Form
     {
-        public Form1()
+        public Frm_Datbs_Trans()
         {
             InitializeComponent();
         }

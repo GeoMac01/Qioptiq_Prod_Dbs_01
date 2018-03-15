@@ -16,7 +16,7 @@ namespace Qioptiq_Prod_Dbs
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new Frm_Datbs_Trans());
         }
     }
 }
