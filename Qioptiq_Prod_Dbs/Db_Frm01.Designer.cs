@@ -43,6 +43,11 @@
             this.Bt_Connect = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Bt_EnDbPath = new System.Windows.Forms.Button();
+            this.Tb_FindTxt = new System.Windows.Forms.TextBox();
+            this.CmBx_TablColumn = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.GbrBx_ConString.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -52,6 +57,11 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.panel1.Controls.Add(this.label5);
+            this.panel1.Controls.Add(this.label4);
+            this.panel1.Controls.Add(this.CmBx_TablColumn);
+            this.panel1.Controls.Add(this.Tb_FindTxt);
+            this.panel1.Controls.Add(this.Bt_EnDbPath);
             this.panel1.Controls.Add(this.GbrBx_ConString);
             this.panel1.Controls.Add(this.Bt_DisplayDb);
             this.panel1.Controls.Add(this.CbBx_Table);
@@ -72,6 +82,7 @@
             this.GbrBx_ConString.Controls.Add(this.label2);
             this.GbrBx_ConString.Controls.Add(this.label3);
             this.GbrBx_ConString.Controls.Add(this.TxBx_Login);
+            this.GbrBx_ConString.Enabled = false;
             this.GbrBx_ConString.Location = new System.Drawing.Point(3, 3);
             this.GbrBx_ConString.Name = "GbrBx_ConString";
             this.GbrBx_ConString.Size = new System.Drawing.Size(140, 164);
@@ -160,6 +171,7 @@
             // 
             this.Bt_DisplayDb.BackColor = System.Drawing.SystemColors.ButtonShadow;
             this.Bt_DisplayDb.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.Bt_DisplayDb.ForeColor = System.Drawing.SystemColors.Control;
             this.Bt_DisplayDb.Location = new System.Drawing.Point(91, 168);
             this.Bt_DisplayDb.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.Bt_DisplayDb.Name = "Bt_DisplayDb";
@@ -183,12 +195,13 @@
             // 
             this.Bt_Connect.BackColor = System.Drawing.Color.SteelBlue;
             this.Bt_Connect.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.Bt_Connect.ForeColor = System.Drawing.SystemColors.Control;
             this.Bt_Connect.Location = new System.Drawing.Point(3, 168);
             this.Bt_Connect.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.Bt_Connect.Name = "Bt_Connect";
             this.Bt_Connect.Size = new System.Drawing.Size(84, 45);
             this.Bt_Connect.TabIndex = 17;
-            this.Bt_Connect.Text = "Connect Database";
+            this.Bt_Connect.Text = "Connect to Database";
             this.Bt_Connect.UseVisualStyleBackColor = false;
             this.Bt_Connect.Click += new System.EventHandler(this.Bt_Connect_Click);
             // 
@@ -212,6 +225,57 @@
             this.dataGridView1.Size = new System.Drawing.Size(640, 225);
             this.dataGridView1.TabIndex = 0;
             // 
+            // Bt_EnDbPath
+            // 
+            this.Bt_EnDbPath.BackColor = System.Drawing.Color.Coral;
+            this.Bt_EnDbPath.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Bt_EnDbPath.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.Bt_EnDbPath.Location = new System.Drawing.Point(149, 147);
+            this.Bt_EnDbPath.Name = "Bt_EnDbPath";
+            this.Bt_EnDbPath.Size = new System.Drawing.Size(22, 20);
+            this.Bt_EnDbPath.TabIndex = 21;
+            this.Bt_EnDbPath.UseVisualStyleBackColor = false;
+            this.Bt_EnDbPath.Click += new System.EventHandler(this.Bt_EnDbPath_Click);
+            // 
+            // Tb_FindTxt
+            // 
+            this.Tb_FindTxt.Location = new System.Drawing.Point(198, 32);
+            this.Tb_FindTxt.Name = "Tb_FindTxt";
+            this.Tb_FindTxt.Size = new System.Drawing.Size(80, 20);
+            this.Tb_FindTxt.TabIndex = 22;
+            this.Tb_FindTxt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Tb_FindTxt_KeyPress);
+            // 
+            // CmBx_TablColumn
+            // 
+            this.CmBx_TablColumn.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CmBx_TablColumn.FormattingEnabled = true;
+            this.CmBx_TablColumn.Items.AddRange(new object[] {
+            "SerialNb",
+            "TestDate"});
+            this.CmBx_TablColumn.Location = new System.Drawing.Point(283, 32);
+            this.CmBx_TablColumn.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.CmBx_TablColumn.Name = "CmBx_TablColumn";
+            this.CmBx_TablColumn.Size = new System.Drawing.Size(84, 21);
+            this.CmBx_TablColumn.TabIndex = 23;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(195, 16);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(63, 13);
+            this.label4.TabIndex = 24;
+            this.label4.Text = "Text to Find";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(280, 16);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(72, 13);
+            this.label5.TabIndex = 25;
+            this.label5.Text = "Table Column";
+            // 
             // Frm_Datbs_Trans
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -221,8 +285,9 @@
             this.Controls.Add(this.panel1);
             this.Name = "Frm_Datbs_Trans";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Qioptiq Dbase Access 01";
+            this.Text = "Databse Viewer 30065-01";
             this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.GbrBx_ConString.ResumeLayout(false);
             this.GbrBx_ConString.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -248,6 +313,11 @@
         private System.Windows.Forms.ComboBox CbBx_Table;
         private System.Windows.Forms.Button Bt_Connect;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button Bt_EnDbPath;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ComboBox CmBx_TablColumn;
+        private System.Windows.Forms.TextBox Tb_FindTxt;
     }
 }
 

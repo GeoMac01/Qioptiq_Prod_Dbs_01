@@ -9,8 +9,9 @@ using System.Data;
 using System.Data.Sql;
 using System.Data.SqlClient;
 using System.Windows.Forms;
-using Microsoft.VisualBasic;
 
+/**SQL Class attempt...**/
+/**16/03/2018 V01**/
 
 namespace Qioptiq_Prod_Dbs.Helper
 {
@@ -21,29 +22,30 @@ namespace Qioptiq_Prod_Dbs.Helper
         SqlDataAdapter adapter;
 
         #region parameters
-        private static int iD = 0; //loaded with the new row index new row
+        //private static int iD = 0; //loaded with the new row index new row
         private static DataSet ds = new DataSet();
         public static string DbServerName = null;
         public static string DbName = null;
         public static string DbTableName = null;
         public static string DbUsername = null;
         public static string DbPassword = null;
-        private static string dataBaseName = null;
+        //private static string dataBaseName = null;
         #endregion
         //==========================================================================================//
         public string GetConnectionString()
         {
-            string connectionString = "Server = " + DbServerName + ";" + //Data Source
+            /**Buildup the database path string**/
+            string connectionString =   "Server = " + DbServerName + ";" + //Data Source
                                         "Database = " + DbName + ";" + //Initial catalog  
                                         "Trusted_Connection = false" + ";" +//false: user name and PW
                                         "User Id = " + DbUsername + ";" +
                                         "Password = " + DbPassword;
-
             return connectionString;
         }
-//==========================================================================================//
+        //==========================================================================================//
         public bool OpenSqlConnection()
         {
+            /**Check if database connected**/
             try
             {
                 con = new SqlConnection(GetConnectionString());
@@ -54,68 +56,61 @@ namespace Qioptiq_Prod_Dbs.Helper
             }
             catch (Exception)
             {
-                //MessageBox.Show("Dtb Error " + e.ToString());
                 MessageBox.Show("Dtb error\n Check string\n");
                 return false;
             }
         }
-//==========================================================================================//
-        public bool DisplayData(string nameDb, DataGridView dtGrd)
-        {//will display the highest entry number needs sync....
-
-            con.Open();
+        //==========================================================================================//
+        public DataTable FillTable(string nameTbl) { 
+            
             DataTable dt = new DataTable();
+            string adapterString = "SELECT * FROM " + nameTbl;
+            //string adapterString = "SELECT * FROM " + nameTbl + " WHERE LaserId = (SELECT max(LaserId) FROM " + nameTbl + ")";
 
-            cmd = new SqlCommand("select count(*) from " + nameDb, con);
-            int TbRow = ((int)cmd.ExecuteScalar());
+            try {
+                con.Open();
+                adapter = new SqlDataAdapter(adapterString, con);
+                adapter.Fill(dt); }
 
-            string adapterString = "SELECT * FROM" + nameDb + "WHERE LaserId = (SELECT max(LaserId) FROM" + dataBaseName + ")";
-
-            //adapt = new SqlDataAdapter(adapterString, con);
-
-            try
-            {
-                //adapt.Fill(dt);
-                dtGrd.DataSource = dt;
+            catch (Exception) {
+                MessageBox.Show("DB adaptor error");
+                dt.Clear();
             }
-            catch (Exception e) { MessageBox.Show("DB adaptor error" + e.ToString()); }
 
             con.Close();
-
-            return true;
+            return dt;
         }
-//==========================================================================================//
+        //==========================================================================================//
         public DataSet FindTables()
             {
+                /**Find the list of tables in the database for the combobox to chose from**/
                 adapter = new SqlDataAdapter();
                 DataSet ds = new DataSet();
-                int i = 0;
-                string sql = null;
 
-                sql = "Select DISTINCT(name) FROM sys.Tables";
+                string sql = "Select DISTINCT(name) FROM sys.Tables";
 
-
-                try
-                {
-                   // connection.Open();
+                try {
+                    con.Open();
                     cmd = new SqlCommand(sql, con);
                     adapter.SelectCommand = cmd;
                     adapter.Fill(ds);
                     adapter.Dispose();
                     cmd.Dispose();
                     con.Close();
-
-                    for (i = 0; i <= ds.Tables[0].Rows.Count - 1; i++)
-                    {
-                        MessageBox.Show(ds.Tables[0].Rows[i].ItemArray[0].ToString());
-                    }
-                }
+                 }
                 catch (Exception) { MessageBox.Show("Cannot find tables"); }
 
             return ds;
             }
-//==========================================================================================//
+        //==========================================================================================//
+        public DataTable FindTxtInCol(string txtToFind, string colmId)
+        {
+            DataTable dtRow = new DataTable();
+            DataRow dtRow1;
 
+
+            return dtRow;
+        }
 
 
 
