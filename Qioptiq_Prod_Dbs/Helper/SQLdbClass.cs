@@ -103,18 +103,24 @@ namespace Qioptiq_Prod_Dbs.Helper
             return ds;
             }
         //==========================================================================================//
-        public DataTable FindTxtInCol(string txtToFind, string colmId)
-        {
-            DataTable dtRow = new DataTable();
-            DataRow dtRow1;
+        public DataView FindTxtInCol(string nameTbl, string express)
+        {          
+            DataTable tableIn = FillTable(nameTbl);//open and load table in db
+            DataView view = new DataView(tableIn);
+          
+            DataRow[] foundRows;
+            foundRows = tableIn.Select(express);
 
+            // Print column 0 of each returned row.
+            for (int i = 0; i < foundRows.Length; i++)
+            {
+                Debug.WriteLine(foundRows[i][0]);
 
-            return dtRow;
+            }
+            return view;           
         }
 
-
-
-    //=========================================================================================//
-    //=========================================================================================//
-}
+        //=========================================================================================//
+        //=========================================================================================//
+    }
 }

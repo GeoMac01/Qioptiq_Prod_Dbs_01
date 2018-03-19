@@ -47,6 +47,7 @@ namespace Qioptiq_Prod_Dbs
             /**call class method return a datatable**/
             dataGridView1.DataSource = objSQL.FillTable(CbBx_Table.Text);
             CmBx_TablColumn.SelectedIndex = 0;
+            Cmbx_Opp.SelectedIndex = 0;
         }
         //================================================================================//
         private void Bt_EnDbPath_Click(object sender, EventArgs e)
@@ -66,21 +67,21 @@ namespace Qioptiq_Prod_Dbs
         //================================================================================//
         private void Tb_FindTxt_KeyPress(object sender, KeyPressEventArgs e)
         {
-            string value = Tb_FindTxt.Text;
 
             if (e.KeyChar == (char)Keys.Enter)
             {
-                /*
-                using (SqlConnection connection = new SqlConnection(connString)) ;
-                using (SqlCommand cmd = new SqlCommand(
-                   "select keyword from messageanalysis where value=@value")
-                    {
-                    cmd.AddParameter("@value",searchValue);
-                    var result = cmd.ExecuteScalar();
-                    return (result == null) ? null : result.ToString();
-                    */
+                this.dataGridView1.DataSource = null;
+                this.dataGridView1.Rows.Clear();
+                this.dataGridView1.Refresh();
+
+                string expression = CmBx_TablColumn.Text + " " + Cmbx_Opp.Text + " " + "'" + Tb_FindTxt.Text + "'";
+                //expression = "TestDate < '01/12/2017'";
+                //expression = "SerialNb = 36030030";
+
+                DataView fdTxt = objSQL.FindTxtInCol(CbBx_Table.Text, expression);
+                dataGridView1.DataSource = fdTxt;
             }
-            else { MessageBox.Show("Press Enter"); }
+ 
         }
         //================================================================================//
         //================================================================================//
