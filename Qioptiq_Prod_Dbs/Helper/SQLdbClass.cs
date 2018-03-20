@@ -64,8 +64,8 @@ namespace Qioptiq_Prod_Dbs.Helper
         public DataTable FillTable(string nameTbl) { 
             
             DataTable dt = new DataTable();
-            string adapterString = "SELECT * FROM " + nameTbl;
-            //string adapterString = "SELECT * FROM " + nameTbl + " WHERE LaserId = (SELECT max(LaserId) FROM " + nameTbl + ")";
+            //string adapterString = "SELECT * FROM " + nameTbl;
+            string adapterString = "SELECT * FROM " + nameTbl + " WHERE SerialNb = '36030030'" ;
 
             try {
                 con.Open();
@@ -106,15 +106,16 @@ namespace Qioptiq_Prod_Dbs.Helper
         public DataView FindTxtInCol(string nameTbl, string express)
         {          
             DataTable tableIn = FillTable(nameTbl);//open and load table in db
-            DataView view = new DataView(tableIn);
-          
-            DataRow[] foundRows;
-            foundRows = tableIn.Select(express);
+            DataView view = new DataView(tableIn);// no use for now !!!!!!!
 
-            // Print column 0 of each returned row.
+            DataRow[] foundRows = tableIn.Select(express);//expression buit in main long command string
+
             for (int i = 0; i < foundRows.Length; i++)
             {
                 Debug.WriteLine(foundRows[i][0]);
+                Debug.WriteLine(foundRows[i][1]);
+                Debug.WriteLine(foundRows[i][2]);
+                Debug.WriteLine(foundRows[i][3]);
 
             }
             return view;           
@@ -122,5 +123,36 @@ namespace Qioptiq_Prod_Dbs.Helper
 
         //=========================================================================================//
         //=========================================================================================//
-    }
+        public DataTable FindTxtInCol2(string tableToLook, string columnToLook, string toFindTxt)
+        {
+
+            DataSet dt = new DataSet();
+            DataTable dtTbl = new DataTable();
+            //string adapterString = " SELECT * FROM " + tableToLook + " WHERE " + columnToLook + " LIKE " + toFindTxt;
+            string adapterString = " SELECT * FROM " + tableToLook + " WHERE " + columnToLook + " LIKE " + toFindTxt;
+            //string adapterString = " SELECT " + columnToLook  + " FROM " + tableToLook + " WHERE " + columnToLook + " LIKE " + toFindTxt;
+
+            try
+            {
+                con.Open();
+                adapter = new SqlDataAdapter(adapterString, con);
+                adapter.Fill(dt, "*");
+                adapter.Dispose();
+                cmd.Dispose();
+                con.Close();
+
+                dtTbl = dt.Tables[0];
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("DB adaptor error");
+                dt.Clear();
+            }
+
+            return dtTbl;
+        }
+
+            //=========================================================================================//
+            //=========================================================================================//
+        }
 }

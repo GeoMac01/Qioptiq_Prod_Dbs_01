@@ -35,8 +35,9 @@ namespace Qioptiq_Prod_Dbs
 
             /**Combobox populate with table names**/
             CbBx_Table.Items.Clear();
-            for (int i = 0; i <= dbDisplay.Tables[0].Rows.Count - 1; i++) {
-            CbBx_Table.Items.Add(dbDisplay.Tables[0].Rows[i].ItemArray[0].ToString()); }
+
+            for (int i = 0; i <= dbDisplay.Tables[0].Rows.Count - 1; i++) { CbBx_Table.Items.Add(dbDisplay.Tables[0].Rows[i].ItemArray[0].ToString()); }
+
             if (CbBx_Table.Items.Count > 0) { CbBx_Table.SelectedIndex = 0; }
 
             else CbBx_Table.Text = "No Table !";
@@ -67,6 +68,7 @@ namespace Qioptiq_Prod_Dbs
         //================================================================================//
         private void Tb_FindTxt_KeyPress(object sender, KeyPressEventArgs e)
         {
+            DataTable rtnTable = new DataTable();
 
             if (e.KeyChar == (char)Keys.Enter)
             {
@@ -78,10 +80,16 @@ namespace Qioptiq_Prod_Dbs
                 //expression = "TestDate < '01/12/2017'";
                 //expression = "SerialNb = 36030030";
 
-                DataView fdTxt = objSQL.FindTxtInCol(CbBx_Table.Text, expression);
-                dataGridView1.DataSource = fdTxt;
+                 rtnTable = objSQL.FindTxtInCol2(CbBx_Table.Text, CmBx_TablColumn.Text, Tb_FindTxt.Text);
+                //dataGridView1.DataSource = objSQL.FindTxtInCol(CbBx_Table.Text, expression);
+                dataGridView1.DataSource = rtnTable;
+
+                foreach (DataRow dataRow in rtnTable.Rows)
+                {
+                    richTextBox1.AppendText(dataRow.ToString());
+                }
+
             }
- 
         }
         //================================================================================//
         //================================================================================//

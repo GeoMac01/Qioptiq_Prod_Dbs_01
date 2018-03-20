@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.Lbl_opr = new System.Windows.Forms.Label();
+            this.Cmbx_Opp = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.CmBx_TablColumn = new System.Windows.Forms.ComboBox();
@@ -48,8 +50,7 @@
             this.Bt_Connect = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Lbl_opr = new System.Windows.Forms.Label();
-            this.Cmbx_Opp = new System.Windows.Forms.ComboBox();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.panel1.SuspendLayout();
             this.GbrBx_ConString.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -59,6 +60,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.panel1.Controls.Add(this.richTextBox1);
             this.panel1.Controls.Add(this.Lbl_opr);
             this.panel1.Controls.Add(this.Cmbx_Opp);
             this.panel1.Controls.Add(this.label5);
@@ -73,8 +75,32 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(473, 184);
+            this.panel1.Size = new System.Drawing.Size(526, 284);
             this.panel1.TabIndex = 0;
+            // 
+            // Lbl_opr
+            // 
+            this.Lbl_opr.AutoSize = true;
+            this.Lbl_opr.Location = new System.Drawing.Point(280, 100);
+            this.Lbl_opr.Name = "Lbl_opr";
+            this.Lbl_opr.Size = new System.Drawing.Size(27, 13);
+            this.Lbl_opr.TabIndex = 27;
+            this.Lbl_opr.Text = "Opr.";
+            // 
+            // Cmbx_Opp
+            // 
+            this.Cmbx_Opp.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Cmbx_Opp.FormattingEnabled = true;
+            this.Cmbx_Opp.Items.AddRange(new object[] {
+            "=",
+            "<",
+            ">",
+            "<>"});
+            this.Cmbx_Opp.Location = new System.Drawing.Point(278, 116);
+            this.Cmbx_Opp.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.Cmbx_Opp.Name = "Cmbx_Opp";
+            this.Cmbx_Opp.Size = new System.Drawing.Size(43, 21);
+            this.Cmbx_Opp.TabIndex = 26;
             // 
             // label5
             // 
@@ -265,9 +291,9 @@
             this.panel2.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.panel2.Controls.Add(this.dataGridView1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 184);
+            this.panel2.Location = new System.Drawing.Point(0, 284);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(473, 213);
+            this.panel2.Size = new System.Drawing.Size(526, 147);
             this.panel2.TabIndex = 1;
             // 
             // dataGridView1
@@ -278,38 +304,22 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(473, 213);
+            this.dataGridView1.Size = new System.Drawing.Size(526, 147);
             this.dataGridView1.TabIndex = 0;
             // 
-            // Lbl_opr
+            // richTextBox1
             // 
-            this.Lbl_opr.AutoSize = true;
-            this.Lbl_opr.Location = new System.Drawing.Point(280, 100);
-            this.Lbl_opr.Name = "Lbl_opr";
-            this.Lbl_opr.Size = new System.Drawing.Size(27, 13);
-            this.Lbl_opr.TabIndex = 27;
-            this.Lbl_opr.Text = "Opr.";
-            // 
-            // Cmbx_Opp
-            // 
-            this.Cmbx_Opp.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.Cmbx_Opp.FormattingEnabled = true;
-            this.Cmbx_Opp.Items.AddRange(new object[] {
-            "=",
-            "<",
-            ">",
-            "<>"});
-            this.Cmbx_Opp.Location = new System.Drawing.Point(278, 116);
-            this.Cmbx_Opp.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.Cmbx_Opp.Name = "Cmbx_Opp";
-            this.Cmbx_Opp.Size = new System.Drawing.Size(43, 21);
-            this.Cmbx_Opp.TabIndex = 26;
+            this.richTextBox1.Location = new System.Drawing.Point(86, 188);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(363, 90);
+            this.richTextBox1.TabIndex = 28;
+            this.richTextBox1.Text = "";
             // 
             // Frm_Datbs_Trans
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(473, 397);
+            this.ClientSize = new System.Drawing.Size(526, 431);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Name = "Frm_Datbs_Trans";
@@ -349,6 +359,7 @@
         private System.Windows.Forms.TextBox Tb_FindTxt;
         private System.Windows.Forms.Label Lbl_opr;
         private System.Windows.Forms.ComboBox Cmbx_Opp;
+        private System.Windows.Forms.RichTextBox richTextBox1;
     }
 }
 
