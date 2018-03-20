@@ -29,7 +29,6 @@ namespace Qioptiq_Prod_Dbs.Helper
         public static string DbTableName = null;
         public static string DbUsername = null;
         public static string DbPassword = null;
-        //private static string dataBaseName = null;
         #endregion
         //==========================================================================================//
         public string GetConnectionString()
@@ -61,98 +60,72 @@ namespace Qioptiq_Prod_Dbs.Helper
             }
         }
         //==========================================================================================//
-        public DataTable FillTable(string nameTbl) { 
-            
-            DataTable dt = new DataTable();
-            //string adapterString = "SELECT * FROM " + nameTbl;
-            string adapterString = "SELECT * FROM " + nameTbl + " WHERE SerialNb = '36030030'" ;
-
-            try {
-                con.Open();
-                adapter = new SqlDataAdapter(adapterString, con);
-                adapter.Fill(dt); }
-
-            catch (Exception) {
-                MessageBox.Show("DB adaptor error");
-                dt.Clear();
-            }
-
-            con.Close();
-            return dt;
-        }
-        //==========================================================================================//
         public DataSet FindTables()
-            {
-                /**Find the list of tables in the database for the combobox to chose from**/
-                adapter = new SqlDataAdapter();
-                DataSet ds = new DataSet();
-
-                string sql = "Select DISTINCT(name) FROM sys.Tables";
-
-                try {
-                    con.Open();
-                    cmd = new SqlCommand(sql, con);
-                    adapter.SelectCommand = cmd;
-                    adapter.Fill(ds);
-                    adapter.Dispose();
-                    cmd.Dispose();
-                    con.Close();
-                 }
-                catch (Exception) { MessageBox.Show("Cannot find tables"); }
-
-            return ds;
-            }
-        //==========================================================================================//
-        public DataView FindTxtInCol(string nameTbl, string express)
-        {          
-            DataTable tableIn = FillTable(nameTbl);//open and load table in db
-            DataView view = new DataView(tableIn);// no use for now !!!!!!!
-
-            DataRow[] foundRows = tableIn.Select(express);//expression buit in main long command string
-
-            for (int i = 0; i < foundRows.Length; i++)
-            {
-                Debug.WriteLine(foundRows[i][0]);
-                Debug.WriteLine(foundRows[i][1]);
-                Debug.WriteLine(foundRows[i][2]);
-                Debug.WriteLine(foundRows[i][3]);
-
-            }
-            return view;           
-        }
-
-        //=========================================================================================//
-        //=========================================================================================//
-        public DataTable FindTxtInCol2(string tableToLook, string columnToLook, string toFindTxt)
         {
+            /**Find the list of tables in the database for the combobox to chose from**/
+            adapter = new SqlDataAdapter();
+            DataSet ds = new DataSet();
 
-            DataSet dt = new DataSet();
-            DataTable dtTbl = new DataTable();
-            //string adapterString = " SELECT * FROM " + tableToLook + " WHERE " + columnToLook + " LIKE " + toFindTxt;
-            string adapterString = " SELECT * FROM " + tableToLook + " WHERE " + columnToLook + " LIKE " + toFindTxt;
-            //string adapterString = " SELECT " + columnToLook  + " FROM " + tableToLook + " WHERE " + columnToLook + " LIKE " + toFindTxt;
+            string sql = "Select DISTINCT(name) FROM sys.Tables";
 
             try
             {
                 con.Open();
-                adapter = new SqlDataAdapter(adapterString, con);
-                adapter.Fill(dt, "*");
+                cmd = new SqlCommand(sql, con);
+                adapter.SelectCommand = cmd;
+                adapter.Fill(ds);
                 adapter.Dispose();
-                cmd.Dispose();
-                con.Close();
+                cmd.Dispose(); }
+            catch (Exception) { MessageBox.Show("Cannot find tables"); }
 
-                dtTbl = dt.Tables[0];
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("DB adaptor error");
-                dt.Clear();
-            }
+            con.Close();
 
-            return dtTbl;
+            return ds;
         }
+        //==========================================================================================//
+        public DataTable FillTable(string nameTbl) { 
+            
+            DataTable dt = new DataTable();
+            dt.Clear();
 
-            //=========================================================================================//
-            //=========================================================================================//
+            string adapterString = "SELECT * FROM " + nameTbl;
+
+            try {
+                con.Open();
+                adapter = new SqlDataAdapter(adapterString, con);
+                adapter.Fill(dt);
+                adapter.Dispose();
+                cmd.Dispose(); }
+
+            catch (Exception) { MessageBox.Show("DB adaptor error"); }
+
+            con.Close();
+
+            return dt;
+        }
+        //=========================================================================================//
+        public DataTable FindTxtInCol2(string tableToLook, string theString)
+        {
+            DataTable dt = new DataTable();
+            dt.Clear();
+
+            string adapterString = theString;
+
+            try {
+                con.Open();
+                adapter = new SqlDataAdapter(adapterString, con);
+                adapter.Fill(dt);
+                adapter.Dispose();
+                cmd.Dispose(); }
+
+            catch (Exception) { MessageBox.Show("DB adaptor error"); }
+
+            con.Close();
+
+            return dt;
+
+        }
+        //=========================================================================================//
+        //=========================================================================================//
         }
 }

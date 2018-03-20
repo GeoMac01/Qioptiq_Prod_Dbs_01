@@ -68,7 +68,6 @@ namespace Qioptiq_Prod_Dbs
         //================================================================================//
         private void Tb_FindTxt_KeyPress(object sender, KeyPressEventArgs e)
         {
-            DataTable rtnTable = new DataTable();
 
             if (e.KeyChar == (char)Keys.Enter)
             {
@@ -76,18 +75,9 @@ namespace Qioptiq_Prod_Dbs
                 this.dataGridView1.Rows.Clear();
                 this.dataGridView1.Refresh();
 
-                string expression = CmBx_TablColumn.Text + " " + Cmbx_Opp.Text + " " + "'" + Tb_FindTxt.Text + "'";
-                //expression = "TestDate < '01/12/2017'";
-                //expression = "SerialNb = 36030030";
-
-                 rtnTable = objSQL.FindTxtInCol2(CbBx_Table.Text, CmBx_TablColumn.Text, Tb_FindTxt.Text);
-                //dataGridView1.DataSource = objSQL.FindTxtInCol(CbBx_Table.Text, expression);
-                dataGridView1.DataSource = rtnTable;
-
-                foreach (DataRow dataRow in rtnTable.Rows)
-                {
-                    richTextBox1.AppendText(dataRow.ToString());
-                }
+                string expression = "SELECT * FROM " + CbBx_Table.Text + " WHERE " + CmBx_TablColumn.Text + " " + Cmbx_Opp.Text + " " + "'%" + Tb_FindTxt.Text + "%'";
+                //string expression = "SELECT * FROM " + CbBx_Table.Text + " WHERE " + CmBx_TablColumn.Text + " " + Cmbx_Opp.Text + " " + "'" + Tb_FindTxt.Text + "'";
+                dataGridView1.DataSource = objSQL.FindTxtInCol2(CbBx_Table.Text, expression);
 
             }
         }
