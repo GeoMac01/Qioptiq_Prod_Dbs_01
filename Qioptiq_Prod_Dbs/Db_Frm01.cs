@@ -48,6 +48,7 @@ namespace Qioptiq_Prod_Dbs
         //================================================================================//
         private void Bt_DisplayDb_Click(object sender, EventArgs e)
         {
+            ClearTable();
             /**call class method return a datatable**/
             dataGridView1.DataSource = objSQL.FillTable(CbBx_Table.Text, CmBx_TablColumn.Text);
         }
@@ -72,19 +73,22 @@ namespace Qioptiq_Prod_Dbs
 
             if (e.KeyChar == (char)Keys.Enter)
             {
-                this.dataGridView1.DataSource = null;
-                this.dataGridView1.Rows.Clear();
-                this.dataGridView1.Refresh();
+                ClearTable();
 
                 //string expression = "SELECT * FROM " + CbBx_Table.Text + " WHERE " + CmBx_TablColumn.Text + " " + Cmbx_Opp.Text + " " + "'%" + Tb_FindTxt.Text + "%'";
                 string expression = "SELECT * FROM " + CbBx_Table.Text + " WHERE " + CmBx_TablColumn.Text + " " + Cmbx_Opp.Text + " " + Tb_FindTxt.Text;
-                //LIMIT 100
-                //ORDER BY
-                // = removed as operator replace by LIKE.  = requires for non num. '...' only (strit comparaison)
+                
                 dataGridView1.DataSource = objSQL.FindTxtInCol2(CbBx_Table.Text, expression);
-
             }
         }
+        //================================================================================//
+        private void ClearTable()
+        {
+            this.dataGridView1.DataSource = null;
+            this.dataGridView1.Rows.Clear();
+            this.dataGridView1.Refresh();
+        }
+
         //================================================================================//
         //================================================================================//
     }

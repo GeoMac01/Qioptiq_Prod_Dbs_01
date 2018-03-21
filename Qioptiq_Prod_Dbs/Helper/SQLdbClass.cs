@@ -83,25 +83,34 @@ namespace Qioptiq_Prod_Dbs.Helper
             return ds;
         }
         //==========================================================================================//
-        public DataTable FillTable(string nameTbl, string colToOrder) { 
-            
+        public DataTable FillTable(string nameTbl, string colToOrder) {
+
+            string adapterString = null;
             DataTable dt = new DataTable();
-            dt.Clear();
 
-            //string adapterString = "SELECT * FROM " + nameTbl;
-            string adapterString = "SELECT * FROM " + nameTbl + " ORDER BY " + colToOrder ;
-
-            try {
+            try
+            {
                 con.Open();
+                adapterString = "SELECT * FROM " + nameTbl;
                 adapter = new SqlDataAdapter(adapterString, con);
+                dt.Clear();
                 adapter.Fill(dt);
                 adapter.Dispose();
-                cmd.Dispose(); }
+                cmd.Dispose();
 
+                if (dt.Columns.Contains(colToOrder))  {
+                    adapterString = "SELECT * FROM " + nameTbl + " ORDER BY " + colToOrder;
+                    adapter = new SqlDataAdapter(adapterString, con);
+                    dt.Clear();
+                    adapter.Fill(dt);
+                    adapter.Dispose();
+                    cmd.Dispose();
+                }
+                con.Close();
+            }
             catch (Exception) { MessageBox.Show("DB adaptor error"); }
 
             con.Close();
-
             return dt;
         }
         //=========================================================================================//

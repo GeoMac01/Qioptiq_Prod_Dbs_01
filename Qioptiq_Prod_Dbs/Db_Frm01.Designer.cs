@@ -91,9 +91,9 @@
             this.Cmbx_Opp.FormattingEnabled = true;
             this.Cmbx_Opp.Items.AddRange(new object[] {
             "LIKE",
-            "<",
-            ">",
-            "<>"});
+            "<=",
+            ">=",
+            "="});
             this.Cmbx_Opp.Location = new System.Drawing.Point(278, 116);
             this.Cmbx_Opp.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.Cmbx_Opp.Name = "Cmbx_Opp";
