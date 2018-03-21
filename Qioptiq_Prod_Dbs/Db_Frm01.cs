@@ -70,14 +70,17 @@ namespace Qioptiq_Prod_Dbs
         //================================================================================//
         private void Tb_FindTxt_KeyPress(object sender, KeyPressEventArgs e)
         {
+            string expression = null;
 
             if (e.KeyChar == (char)Keys.Enter)
             {
                 ClearTable();
 
-                //string expression = "SELECT * FROM " + CbBx_Table.Text + " WHERE " + CmBx_TablColumn.Text + " " + Cmbx_Opp.Text + " " + "'%" + Tb_FindTxt.Text + "%'";
-                string expression = "SELECT * FROM " + CbBx_Table.Text + " WHERE " + CmBx_TablColumn.Text + " " + Cmbx_Opp.Text + " " + Tb_FindTxt.Text;
-                
+                if (Cmbx_Opp.Text == "LIKE") {
+                expression = "SELECT * FROM " + CbBx_Table.Text + " WHERE " + CmBx_TablColumn.Text + " " + Cmbx_Opp.Text + " " + "'%" + Tb_FindTxt.Text + "%'"; }
+                else {
+                expression = "SELECT * FROM " + CbBx_Table.Text + " WHERE " + CmBx_TablColumn.Text + " " + Cmbx_Opp.Text + " " + "'" + Tb_FindTxt.Text + "'"; }
+
                 dataGridView1.DataSource = objSQL.FindTxtInCol2(CbBx_Table.Text, expression);
             }
         }
@@ -88,7 +91,6 @@ namespace Qioptiq_Prod_Dbs
             this.dataGridView1.Rows.Clear();
             this.dataGridView1.Refresh();
         }
-
         //================================================================================//
         //================================================================================//
     }
