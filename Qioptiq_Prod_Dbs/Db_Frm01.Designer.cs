@@ -91,11 +91,9 @@
             this.Cmbx_Opp.FormattingEnabled = true;
             this.Cmbx_Opp.Items.AddRange(new object[] {
             "LIKE",
-            "=",
             "<",
             ">",
-            "<>",
-            "*"});
+            "<>"});
             this.Cmbx_Opp.Location = new System.Drawing.Point(278, 116);
             this.Cmbx_Opp.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.Cmbx_Opp.Name = "Cmbx_Opp";
@@ -125,8 +123,8 @@
             this.CmBx_TablColumn.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CmBx_TablColumn.FormattingEnabled = true;
             this.CmBx_TablColumn.Items.AddRange(new object[] {
-            "SerialNb",
-            "TestDate"});
+            "TestDate",
+            "SerialNb"});
             this.CmBx_TablColumn.Location = new System.Drawing.Point(190, 116);
             this.CmBx_TablColumn.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.CmBx_TablColumn.Name = "CmBx_TablColumn";

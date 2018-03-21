@@ -41,14 +41,15 @@ namespace Qioptiq_Prod_Dbs
             if (CbBx_Table.Items.Count > 0) { CbBx_Table.SelectedIndex = 0; }
 
             else CbBx_Table.Text = "No Table !";
+
+            CmBx_TablColumn.SelectedIndex = 0;
+            Cmbx_Opp.SelectedIndex = 0;
         }
         //================================================================================//
         private void Bt_DisplayDb_Click(object sender, EventArgs e)
         {
             /**call class method return a datatable**/
-            dataGridView1.DataSource = objSQL.FillTable(CbBx_Table.Text);
-            CmBx_TablColumn.SelectedIndex = 0;
-            Cmbx_Opp.SelectedIndex = 0;
+            dataGridView1.DataSource = objSQL.FillTable(CbBx_Table.Text, CmBx_TablColumn.Text);
         }
         //================================================================================//
         private void Bt_EnDbPath_Click(object sender, EventArgs e)
@@ -75,8 +76,11 @@ namespace Qioptiq_Prod_Dbs
                 this.dataGridView1.Rows.Clear();
                 this.dataGridView1.Refresh();
 
-                string expression = "SELECT * FROM " + CbBx_Table.Text + " WHERE " + CmBx_TablColumn.Text + " " + Cmbx_Opp.Text + " " + "'%" + Tb_FindTxt.Text + "%'";
-                //string expression = "SELECT * FROM " + CbBx_Table.Text + " WHERE " + CmBx_TablColumn.Text + " " + Cmbx_Opp.Text + " " + "'" + Tb_FindTxt.Text + "'";
+                //string expression = "SELECT * FROM " + CbBx_Table.Text + " WHERE " + CmBx_TablColumn.Text + " " + Cmbx_Opp.Text + " " + "'%" + Tb_FindTxt.Text + "%'";
+                string expression = "SELECT * FROM " + CbBx_Table.Text + " WHERE " + CmBx_TablColumn.Text + " " + Cmbx_Opp.Text + " " + Tb_FindTxt.Text;
+                //LIMIT 100
+                //ORDER BY
+                // = removed as operator replace by LIKE.  = requires for non num. '...' only (strit comparaison)
                 dataGridView1.DataSource = objSQL.FindTxtInCol2(CbBx_Table.Text, expression);
 
             }

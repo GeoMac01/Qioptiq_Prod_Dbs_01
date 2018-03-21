@@ -11,7 +11,7 @@ using System.Data.SqlClient;
 using System.Windows.Forms;
 
 /**SQL Class attempt...**/
-/**16/03/2018 V01**/
+/**20/03/2018 V01**/
 
 namespace Qioptiq_Prod_Dbs.Helper
 {
@@ -83,12 +83,13 @@ namespace Qioptiq_Prod_Dbs.Helper
             return ds;
         }
         //==========================================================================================//
-        public DataTable FillTable(string nameTbl) { 
+        public DataTable FillTable(string nameTbl, string colToOrder) { 
             
             DataTable dt = new DataTable();
             dt.Clear();
 
-            string adapterString = "SELECT * FROM " + nameTbl;
+            //string adapterString = "SELECT * FROM " + nameTbl;
+            string adapterString = "SELECT * FROM " + nameTbl + " ORDER BY " + colToOrder ;
 
             try {
                 con.Open();
