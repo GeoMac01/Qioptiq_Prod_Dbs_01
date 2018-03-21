@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_Datbs_Trans));
             this.panel1 = new System.Windows.Forms.Panel();
             this.Lbl_opr = new System.Windows.Forms.Label();
             this.Cmbx_Opp = new System.Windows.Forms.ComboBox();
@@ -360,6 +361,7 @@
             this.ClientSize = new System.Drawing.Size(565, 431);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Frm_Datbs_Trans";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Databse Viewer 30065-01";
