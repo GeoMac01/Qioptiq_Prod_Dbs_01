@@ -132,6 +132,8 @@ namespace Qioptiq_Prod_Dbs.Helper
 
             con.Close();
 
+            if(dt.Rows.Count == 0) { MessageBox.Show("DataTable empty"); }
+
             return dt;
 
         }

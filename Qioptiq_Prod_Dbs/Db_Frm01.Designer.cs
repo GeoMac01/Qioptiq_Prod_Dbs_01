@@ -51,10 +51,8 @@
             this.Bt_Connect = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
+            this.helpProvider1 = new System.Windows.Forms.HelpProvider();
+            this.label11 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.GbrBx_ConString.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -64,10 +62,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.panel1.Controls.Add(this.label9);
-            this.panel1.Controls.Add(this.label8);
-            this.panel1.Controls.Add(this.label7);
-            this.panel1.Controls.Add(this.label6);
+            this.panel1.Controls.Add(this.label11);
             this.panel1.Controls.Add(this.Lbl_opr);
             this.panel1.Controls.Add(this.Cmbx_Opp);
             this.panel1.Controls.Add(this.label5);
@@ -82,13 +77,13 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(565, 187);
+            this.panel1.Size = new System.Drawing.Size(432, 181);
             this.panel1.TabIndex = 0;
             // 
             // Lbl_opr
             // 
             this.Lbl_opr.AutoSize = true;
-            this.Lbl_opr.Location = new System.Drawing.Point(280, 100);
+            this.Lbl_opr.Location = new System.Drawing.Point(247, 101);
             this.Lbl_opr.Name = "Lbl_opr";
             this.Lbl_opr.Size = new System.Drawing.Size(48, 13);
             this.Lbl_opr.TabIndex = 27;
@@ -98,21 +93,23 @@
             // 
             this.Cmbx_Opp.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Cmbx_Opp.FormattingEnabled = true;
+            this.helpProvider1.SetHelpString(this.Cmbx_Opp, "Select Seach Operator");
             this.Cmbx_Opp.Items.AddRange(new object[] {
             "LIKE",
             "<=",
             ">=",
             "="});
-            this.Cmbx_Opp.Location = new System.Drawing.Point(278, 116);
+            this.Cmbx_Opp.Location = new System.Drawing.Point(245, 116);
             this.Cmbx_Opp.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.Cmbx_Opp.Name = "Cmbx_Opp";
+            this.helpProvider1.SetShowHelp(this.Cmbx_Opp, true);
             this.Cmbx_Opp.Size = new System.Drawing.Size(59, 21);
             this.Cmbx_Opp.TabIndex = 26;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(187, 100);
+            this.label5.Location = new System.Drawing.Point(154, 101);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(72, 13);
             this.label5.TabIndex = 25;
@@ -121,7 +118,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(343, 103);
+            this.label4.Location = new System.Drawing.Point(310, 101);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(63, 13);
             this.label4.TabIndex = 24;
@@ -131,19 +128,25 @@
             // 
             this.CmBx_TablColumn.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CmBx_TablColumn.FormattingEnabled = true;
+            this.helpProvider1.SetHelpString(this.CmBx_TablColumn, "Select Column to search");
             this.CmBx_TablColumn.Items.AddRange(new object[] {
             "TestDate",
-            "SerialNb"});
-            this.CmBx_TablColumn.Location = new System.Drawing.Point(190, 116);
+            "SerialNb",
+            "PartNumber",
+            "Wavelength"});
+            this.CmBx_TablColumn.Location = new System.Drawing.Point(157, 116);
             this.CmBx_TablColumn.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.CmBx_TablColumn.Name = "CmBx_TablColumn";
+            this.helpProvider1.SetShowHelp(this.CmBx_TablColumn, true);
             this.CmBx_TablColumn.Size = new System.Drawing.Size(84, 21);
             this.CmBx_TablColumn.TabIndex = 23;
             // 
             // Tb_FindTxt
             // 
-            this.Tb_FindTxt.Location = new System.Drawing.Point(342, 116);
+            this.helpProvider1.SetHelpString(this.Tb_FindTxt, "Enter Serial Number (use LIKE and not =) or Date to search (yyyy/mm/dd)");
+            this.Tb_FindTxt.Location = new System.Drawing.Point(309, 116);
             this.Tb_FindTxt.Name = "Tb_FindTxt";
+            this.helpProvider1.SetShowHelp(this.Tb_FindTxt, true);
             this.Tb_FindTxt.Size = new System.Drawing.Size(80, 20);
             this.Tb_FindTxt.TabIndex = 22;
             this.Tb_FindTxt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Tb_FindTxt_KeyPress);
@@ -153,8 +156,10 @@
             this.Bt_EnDbPath.BackColor = System.Drawing.Color.Coral;
             this.Bt_EnDbPath.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Bt_EnDbPath.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.helpProvider1.SetHelpString(this.Bt_EnDbPath, "Enable Database string modification in groupbox Db String");
             this.Bt_EnDbPath.Location = new System.Drawing.Point(149, 147);
             this.Bt_EnDbPath.Name = "Bt_EnDbPath";
+            this.helpProvider1.SetShowHelp(this.Bt_EnDbPath, true);
             this.Bt_EnDbPath.Size = new System.Drawing.Size(22, 20);
             this.Bt_EnDbPath.TabIndex = 21;
             this.Bt_EnDbPath.UseVisualStyleBackColor = false;
@@ -171,8 +176,10 @@
             this.GbrBx_ConString.Controls.Add(this.label3);
             this.GbrBx_ConString.Controls.Add(this.TxBx_Login);
             this.GbrBx_ConString.Enabled = false;
+            this.helpProvider1.SetHelpString(this.GbrBx_ConString, "Database location and Login string");
             this.GbrBx_ConString.Location = new System.Drawing.Point(3, 3);
             this.GbrBx_ConString.Name = "GbrBx_ConString";
+            this.helpProvider1.SetShowHelp(this.GbrBx_ConString, true);
             this.GbrBx_ConString.Size = new System.Drawing.Size(140, 164);
             this.GbrBx_ConString.TabIndex = 20;
             this.GbrBx_ConString.TabStop = false;
@@ -260,9 +267,11 @@
             this.Bt_DisplayDb.BackColor = System.Drawing.SystemColors.ButtonShadow;
             this.Bt_DisplayDb.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Bt_DisplayDb.ForeColor = System.Drawing.SystemColors.Control;
-            this.Bt_DisplayDb.Location = new System.Drawing.Point(278, 3);
+            this.helpProvider1.SetHelpString(this.Bt_DisplayDb, "Display complete Database Table");
+            this.Bt_DisplayDb.Location = new System.Drawing.Point(245, 3);
             this.Bt_DisplayDb.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.Bt_DisplayDb.Name = "Bt_DisplayDb";
+            this.helpProvider1.SetShowHelp(this.Bt_DisplayDb, true);
             this.Bt_DisplayDb.Size = new System.Drawing.Size(84, 45);
             this.Bt_DisplayDb.TabIndex = 19;
             this.Bt_DisplayDb.Text = "Display Table";
@@ -273,9 +282,11 @@
             // 
             this.CbBx_Table.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CbBx_Table.FormattingEnabled = true;
-            this.CbBx_Table.Location = new System.Drawing.Point(190, 54);
+            this.helpProvider1.SetHelpString(this.CbBx_Table, "Select table to display or search");
+            this.CbBx_Table.Location = new System.Drawing.Point(157, 54);
             this.CbBx_Table.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.CbBx_Table.Name = "CbBx_Table";
+            this.helpProvider1.SetShowHelp(this.CbBx_Table, true);
             this.CbBx_Table.Size = new System.Drawing.Size(172, 21);
             this.CbBx_Table.TabIndex = 18;
             // 
@@ -284,9 +295,11 @@
             this.Bt_Connect.BackColor = System.Drawing.Color.SteelBlue;
             this.Bt_Connect.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Bt_Connect.ForeColor = System.Drawing.SystemColors.Control;
-            this.Bt_Connect.Location = new System.Drawing.Point(190, 2);
+            this.helpProvider1.SetHelpString(this.Bt_Connect, "Click to connect to Database");
+            this.Bt_Connect.Location = new System.Drawing.Point(157, 2);
             this.Bt_Connect.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.Bt_Connect.Name = "Bt_Connect";
+            this.helpProvider1.SetShowHelp(this.Bt_Connect, true);
             this.Bt_Connect.Size = new System.Drawing.Size(84, 45);
             this.Bt_Connect.TabIndex = 17;
             this.Bt_Connect.Text = "Connect to Database";
@@ -298,70 +311,44 @@
             this.panel2.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.panel2.Controls.Add(this.dataGridView1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 187);
+            this.panel2.Location = new System.Drawing.Point(0, 181);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(565, 244);
+            this.panel2.Size = new System.Drawing.Size(432, 250);
             this.panel2.TabIndex = 1;
             // 
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.helpProvider1.SetHelpString(this.dataGridView1, "DatagridView displays table results");
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(565, 244);
+            this.helpProvider1.SetShowHelp(this.dataGridView1, true);
+            this.dataGridView1.Size = new System.Drawing.Size(432, 250);
             this.dataGridView1.TabIndex = 0;
             // 
-            // label6
+            // label11
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Candara", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(441, 15);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(113, 14);
-            this.label6.TabIndex = 28;
-            this.label6.Text = "Date Search Format:";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Candara", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(441, 29);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(71, 14);
-            this.label7.TabIndex = 29;
-            this.label7.Text = "yyyy/mm/dd";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Candara", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(441, 53);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(117, 13);
-            this.label8.TabIndex = 30;
-            this.label8.Text = "LIKE operator valid only";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Candara", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(441, 66);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(95, 13);
-            this.label9.TabIndex = 31;
-            this.label9.Text = "for SerialNb search";
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(332, 59);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(65, 13);
+            this.label11.TabIndex = 34;
+            this.label11.Text = "Table Name";
             // 
             // Frm_Datbs_Trans
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(565, 431);
+            this.ClientSize = new System.Drawing.Size(432, 431);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
+            this.HelpButton = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Frm_Datbs_Trans";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Databse Viewer 30065-01";
@@ -399,10 +386,8 @@
         private System.Windows.Forms.TextBox Tb_FindTxt;
         private System.Windows.Forms.Label Lbl_opr;
         private System.Windows.Forms.ComboBox Cmbx_Opp;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.HelpProvider helpProvider1;
+        private System.Windows.Forms.Label label11;
     }
 }
 
