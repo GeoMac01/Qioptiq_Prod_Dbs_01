@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_Datbs_Trans));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label11 = new System.Windows.Forms.Label();
             this.Lbl_opr = new System.Windows.Forms.Label();
             this.Cmbx_Opp = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -52,7 +53,6 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.helpProvider1 = new System.Windows.Forms.HelpProvider();
-            this.label11 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.GbrBx_ConString.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -79,6 +79,16 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(432, 181);
             this.panel1.TabIndex = 0;
+            this.panel1.DoubleClick += new System.EventHandler(this.panel1_DoubleClick);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(332, 59);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(65, 13);
+            this.label11.TabIndex = 34;
+            this.label11.Text = "Table Name";
             // 
             // Lbl_opr
             // 
@@ -143,7 +153,9 @@
             // 
             // Tb_FindTxt
             // 
-            this.helpProvider1.SetHelpString(this.Tb_FindTxt, "Enter Serial Number (use LIKE and not =) or Date to search (yyyy/mm/dd)");
+            this.Tb_FindTxt.Enabled = false;
+            this.helpProvider1.SetHelpString(this.Tb_FindTxt, "search Serial Number (use LIKE and not =).  search Date (format yyyy/mm/dd).  sea" +
+        "rch Wavelength or laser Part Number if exist...");
             this.Tb_FindTxt.Location = new System.Drawing.Point(309, 116);
             this.Tb_FindTxt.Name = "Tb_FindTxt";
             this.helpProvider1.SetShowHelp(this.Tb_FindTxt, true);
@@ -265,6 +277,7 @@
             // Bt_DisplayDb
             // 
             this.Bt_DisplayDb.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            this.Bt_DisplayDb.Enabled = false;
             this.Bt_DisplayDb.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Bt_DisplayDb.ForeColor = System.Drawing.SystemColors.Control;
             this.helpProvider1.SetHelpString(this.Bt_DisplayDb, "Display complete Database Table");
@@ -328,15 +341,6 @@
             this.helpProvider1.SetShowHelp(this.dataGridView1, true);
             this.dataGridView1.Size = new System.Drawing.Size(432, 250);
             this.dataGridView1.TabIndex = 0;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(332, 59);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(65, 13);
-            this.label11.TabIndex = 34;
-            this.label11.Text = "Table Name";
             // 
             // Frm_Datbs_Trans
             // 

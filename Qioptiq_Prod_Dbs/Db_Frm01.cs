@@ -38,7 +38,11 @@ namespace Qioptiq_Prod_Dbs
 
             for (int i = 0; i <= dbDisplay.Tables[0].Rows.Count - 1; i++) { CbBx_Table.Items.Add(dbDisplay.Tables[0].Rows[i].ItemArray[0].ToString()); }
 
-            if (CbBx_Table.Items.Count > 0) { CbBx_Table.SelectedIndex = 0; }
+            if (CbBx_Table.Items.Count > 0) {
+                Tb_FindTxt.Enabled = true;
+                Bt_DisplayDb.Enabled = true;
+                CbBx_Table.SelectedIndex = 0;
+            }
 
             else CbBx_Table.Text = "No Table !";
 
@@ -91,6 +95,14 @@ namespace Qioptiq_Prod_Dbs
             this.dataGridView1.Rows.Clear();
             this.dataGridView1.Refresh();
         }
+        //================================================================================//
+        private void panel1_DoubleClick(object sender, EventArgs e)
+        {
+            Help_Form_1 hpl = new Help_Form_1();
+            hpl.Show();
+        }
+        //================================================================================//
+
         //================================================================================//
         //================================================================================//
     }
