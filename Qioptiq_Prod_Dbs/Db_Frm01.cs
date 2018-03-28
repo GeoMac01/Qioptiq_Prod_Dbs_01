@@ -96,7 +96,7 @@ namespace Qioptiq_Prod_Dbs
             this.dataGridView1.Refresh();
         }
         //================================================================================//
-        private void panel1_DoubleClick(object sender, EventArgs e)
+        private void Lbl_Help_DoubleClick(object sender, EventArgs e)
         {
             Help_Form_1 hpl = new Help_Form_1();
             hpl.Show();

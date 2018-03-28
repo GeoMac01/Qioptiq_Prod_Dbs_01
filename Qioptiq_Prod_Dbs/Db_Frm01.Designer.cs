@@ -53,6 +53,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.helpProvider1 = new System.Windows.Forms.HelpProvider();
+            this.Lbl_Help = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.GbrBx_ConString.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -62,6 +63,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.panel1.Controls.Add(this.Lbl_Help);
             this.panel1.Controls.Add(this.label11);
             this.panel1.Controls.Add(this.Lbl_opr);
             this.panel1.Controls.Add(this.Cmbx_Opp);
@@ -79,7 +81,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(432, 181);
             this.panel1.TabIndex = 0;
-            this.panel1.DoubleClick += new System.EventHandler(this.panel1_DoubleClick);
             // 
             // label11
             // 
@@ -136,14 +137,14 @@
             // 
             // CmBx_TablColumn
             // 
-            this.CmBx_TablColumn.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CmBx_TablColumn.FormattingEnabled = true;
             this.helpProvider1.SetHelpString(this.CmBx_TablColumn, "Select Column to search");
             this.CmBx_TablColumn.Items.AddRange(new object[] {
             "TestDate",
             "SerialNb",
             "PartNumber",
-            "Wavelength"});
+            "Wavelength",
+            "Laser_Assy_Sn"});
             this.CmBx_TablColumn.Location = new System.Drawing.Point(157, 116);
             this.CmBx_TablColumn.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.CmBx_TablColumn.Name = "CmBx_TablColumn";
@@ -342,6 +343,16 @@
             this.dataGridView1.Size = new System.Drawing.Size(432, 250);
             this.dataGridView1.TabIndex = 0;
             // 
+            // Lbl_Help
+            // 
+            this.Lbl_Help.AutoSize = true;
+            this.Lbl_Help.Location = new System.Drawing.Point(279, 163);
+            this.Lbl_Help.Name = "Lbl_Help";
+            this.Lbl_Help.Size = new System.Drawing.Size(142, 13);
+            this.Lbl_Help.TabIndex = 35;
+            this.Lbl_Help.Text = "Double Click For Help >>> O";
+            this.Lbl_Help.DoubleClick += new System.EventHandler(this.Lbl_Help_DoubleClick);
+            // 
             // Frm_Datbs_Trans
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -392,6 +403,7 @@
         private System.Windows.Forms.ComboBox Cmbx_Opp;
         private System.Windows.Forms.HelpProvider helpProvider1;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label Lbl_Help;
     }
 }
 
