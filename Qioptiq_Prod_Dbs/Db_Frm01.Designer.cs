@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_Datbs_Trans));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.Lbl_Help = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.Lbl_opr = new System.Windows.Forms.Label();
             this.Cmbx_Opp = new System.Windows.Forms.ComboBox();
@@ -53,7 +54,11 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.helpProvider1 = new System.Windows.Forms.HelpProvider();
-            this.Lbl_Help = new System.Windows.Forms.Label();
+            this.Bt_brwsTxt = new System.Windows.Forms.Button();
+            this.Tb_TxtFileLoca = new System.Windows.Forms.TextBox();
+            this.Bt_RdFromDtb = new System.Windows.Forms.Button();
+            this.Bt_SavTodtb = new System.Windows.Forms.Button();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.panel1.SuspendLayout();
             this.GbrBx_ConString.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -63,6 +68,11 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.panel1.Controls.Add(this.richTextBox1);
+            this.panel1.Controls.Add(this.Bt_SavTodtb);
+            this.panel1.Controls.Add(this.Bt_RdFromDtb);
+            this.panel1.Controls.Add(this.Tb_TxtFileLoca);
+            this.panel1.Controls.Add(this.Bt_brwsTxt);
             this.panel1.Controls.Add(this.Lbl_Help);
             this.panel1.Controls.Add(this.label11);
             this.panel1.Controls.Add(this.Lbl_opr);
@@ -79,8 +89,18 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(432, 181);
+            this.panel1.Size = new System.Drawing.Size(825, 181);
             this.panel1.TabIndex = 0;
+            // 
+            // Lbl_Help
+            // 
+            this.Lbl_Help.AutoSize = true;
+            this.Lbl_Help.Location = new System.Drawing.Point(279, 163);
+            this.Lbl_Help.Name = "Lbl_Help";
+            this.Lbl_Help.Size = new System.Drawing.Size(142, 13);
+            this.Lbl_Help.TabIndex = 35;
+            this.Lbl_Help.Text = "Double Click For Help >>> O";
+            this.Lbl_Help.DoubleClick += new System.EventHandler(this.Lbl_Help_DoubleClick);
             // 
             // label11
             // 
@@ -327,7 +347,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 181);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(432, 250);
+            this.panel2.Size = new System.Drawing.Size(825, 167);
             this.panel2.TabIndex = 1;
             // 
             // dataGridView1
@@ -340,24 +360,77 @@
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.helpProvider1.SetShowHelp(this.dataGridView1, true);
-            this.dataGridView1.Size = new System.Drawing.Size(432, 250);
+            this.dataGridView1.Size = new System.Drawing.Size(825, 167);
             this.dataGridView1.TabIndex = 0;
             // 
-            // Lbl_Help
+            // Bt_brwsTxt
             // 
-            this.Lbl_Help.AutoSize = true;
-            this.Lbl_Help.Location = new System.Drawing.Point(279, 163);
-            this.Lbl_Help.Name = "Lbl_Help";
-            this.Lbl_Help.Size = new System.Drawing.Size(142, 13);
-            this.Lbl_Help.TabIndex = 35;
-            this.Lbl_Help.Text = "Double Click For Help >>> O";
-            this.Lbl_Help.DoubleClick += new System.EventHandler(this.Lbl_Help_DoubleClick);
+            this.Bt_brwsTxt.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            this.Bt_brwsTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.Bt_brwsTxt.ForeColor = System.Drawing.SystemColors.Control;
+            this.helpProvider1.SetHelpString(this.Bt_brwsTxt, "");
+            this.Bt_brwsTxt.Location = new System.Drawing.Point(422, 3);
+            this.Bt_brwsTxt.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.Bt_brwsTxt.Name = "Bt_brwsTxt";
+            this.helpProvider1.SetShowHelp(this.Bt_brwsTxt, false);
+            this.Bt_brwsTxt.Size = new System.Drawing.Size(113, 29);
+            this.Bt_brwsTxt.TabIndex = 36;
+            this.Bt_brwsTxt.Text = "Browse Txt File";
+            this.Bt_brwsTxt.UseVisualStyleBackColor = false;
+            this.Bt_brwsTxt.Click += new System.EventHandler(this.Bt_brwsTxt_Click);
+            // 
+            // Tb_TxtFileLoca
+            // 
+            this.Tb_TxtFileLoca.Location = new System.Drawing.Point(540, 7);
+            this.Tb_TxtFileLoca.Name = "Tb_TxtFileLoca";
+            this.Tb_TxtFileLoca.Size = new System.Drawing.Size(273, 20);
+            this.Tb_TxtFileLoca.TabIndex = 37;
+            // 
+            // Bt_RdFromDtb
+            // 
+            this.Bt_RdFromDtb.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            this.Bt_RdFromDtb.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.Bt_RdFromDtb.ForeColor = System.Drawing.SystemColors.Control;
+            this.helpProvider1.SetHelpString(this.Bt_RdFromDtb, "");
+            this.Bt_RdFromDtb.Location = new System.Drawing.Point(422, 73);
+            this.Bt_RdFromDtb.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.Bt_RdFromDtb.Name = "Bt_RdFromDtb";
+            this.helpProvider1.SetShowHelp(this.Bt_RdFromDtb, false);
+            this.Bt_RdFromDtb.Size = new System.Drawing.Size(113, 29);
+            this.Bt_RdFromDtb.TabIndex = 38;
+            this.Bt_RdFromDtb.Text = "Read from dtb";
+            this.Bt_RdFromDtb.UseVisualStyleBackColor = false;
+            this.Bt_RdFromDtb.Click += new System.EventHandler(this.Bt_RdFromDtb_Click);
+            // 
+            // Bt_SavTodtb
+            // 
+            this.Bt_SavTodtb.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            this.Bt_SavTodtb.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.Bt_SavTodtb.ForeColor = System.Drawing.SystemColors.Control;
+            this.helpProvider1.SetHelpString(this.Bt_SavTodtb, "");
+            this.Bt_SavTodtb.Location = new System.Drawing.Point(422, 38);
+            this.Bt_SavTodtb.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.Bt_SavTodtb.Name = "Bt_SavTodtb";
+            this.helpProvider1.SetShowHelp(this.Bt_SavTodtb, false);
+            this.Bt_SavTodtb.Size = new System.Drawing.Size(113, 29);
+            this.Bt_SavTodtb.TabIndex = 39;
+            this.Bt_SavTodtb.Text = "Save to dtb";
+            this.Bt_SavTodtb.UseVisualStyleBackColor = false;
+            this.Bt_SavTodtb.Click += new System.EventHandler(this.Bt_SavTodtb_Click);
+            // 
+            // richTextBox1
+            // 
+            this.richTextBox1.Location = new System.Drawing.Point(541, 35);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(271, 140);
+            this.richTextBox1.TabIndex = 40;
+            this.richTextBox1.Text = "";
             // 
             // Frm_Datbs_Trans
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(432, 431);
+            this.ClientSize = new System.Drawing.Size(825, 348);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.HelpButton = true;
@@ -404,6 +477,11 @@
         private System.Windows.Forms.HelpProvider helpProvider1;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label Lbl_Help;
+        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.Button Bt_SavTodtb;
+        private System.Windows.Forms.Button Bt_RdFromDtb;
+        private System.Windows.Forms.TextBox Tb_TxtFileLoca;
+        private System.Windows.Forms.Button Bt_brwsTxt;
     }
 }
 

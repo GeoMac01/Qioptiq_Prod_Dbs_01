@@ -8,6 +8,8 @@ using System.IO.Ports;
 using System.Data;
 using System.Data.Sql;
 using System.Data.SqlClient;
+using System.Linq;
+using System.IO;
 using System.Windows.Forms;
 
 namespace Qioptiq_Prod_Dbs
@@ -100,6 +102,27 @@ namespace Qioptiq_Prod_Dbs
         {
             Help_Form_1 hpl = new Help_Form_1();
             hpl.Show();
+        }
+        //================================================================================//
+        private void Bt_brwsTxt_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+            openFileDialog1.ShowDialog();
+            openFileDialog1.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
+            openFileDialog1.DefaultExt = ".txt";
+            Tb_TxtFileLoca.Text = openFileDialog1.FileName;
+        }
+        //================================================================================//
+        private void Bt_SavTodtb_Click(object sender, EventArgs e)
+        {
+            objSQL.SaveTxtFileToTable(Tb_TxtFileLoca.Text);
+        }
+        //================================================================================//
+        private void Bt_RdFromDtb_Click(object sender, EventArgs e)
+        {
+            string laserSnInt = "1";
+
+            objSQL.LoadTxtFileFromTable(laserSnInt);
         }
         //================================================================================//
 

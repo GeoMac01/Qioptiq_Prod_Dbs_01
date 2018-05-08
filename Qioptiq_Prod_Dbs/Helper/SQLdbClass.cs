@@ -9,6 +9,7 @@ using System.Data;
 using System.Data.Sql;
 using System.Data.SqlClient;
 using System.Windows.Forms;
+using System.IO;//use with file and stream
 
 /**SQL Class attempt...**/
 /**20/03/2018 V01**/
@@ -138,6 +139,51 @@ namespace Qioptiq_Prod_Dbs.Helper
 
         }
         //=========================================================================================//
-        //=========================================================================================//
+        public void SaveTxtFileToTable(string fileLocation)
+        {
+            string filePath = fileLocation;
+
+            con.Open();
+
+                // create table if not exists 
+                //string createTableQuery = @"Create Table [MyTable](ID int, [FileData] varbinary(max))";
+                //SqlCommand command = new SqlCommand(createTableQuery, con);
+                //command.ExecuteNonQuery();
+
+                // Converts text file(.txt) into byte[]
+                byte[] fileData = File.ReadAllBytes(filePath);
+
+                string insertQuery = @"Insert Into iFLEX_iRIS_LI_Results (Laser_Assy_Sn, LI_Txt_Results) Values(1, @LI_Txt_Results)";
+
+                // Insert text file Value into Sql Table by SqlParameter
+                SqlCommand insertCommand = new SqlCommand(insertQuery, con);
+                SqlParameter sqlParam = insertCommand.Parameters.AddWithValue("@LI_Txt_Results", fileData);
+                sqlParam.DbType = DbType.Binary;
+                insertCommand.ExecuteNonQuery();
+
+            con.Close();
+
         }
+        //=========================================================================================//
+        public void LoadTxtFileFromTable(string lsSn)//get the laser serial number
+        {
+                con.Open();
+
+                string selectQuery = "Select [LI_Txt_Results] From [iFLEX_iRIS_LI_Results] Where Laser_Assy_Sn = " + lsSn;
+
+                // Read File content from Sql Table 
+                SqlCommand selectCommand = new SqlCommand(selectQuery, con);
+                SqlDataReader reader = selectCommand.ExecuteReader();
+                if (reader.Read())
+                {
+                    byte[] fileData = (byte[])reader[0];
+                    // Write/Export File content into new text file
+                    File.WriteAllBytes(@"C:\Log_01\Rtn_Data_LI.txt", fileData);
+                }
+
+            con.Close();
+        }
+        //=========================================================================================//
+        //=========================================================================================//
+    }
 }
